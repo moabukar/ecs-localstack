@@ -8,6 +8,8 @@ tflocal init
 tflocal plan
 tflocal apply
 
+tflocal destroy
+
 tflocal output alb_dns_name
 
 
@@ -27,8 +29,7 @@ vpc_id = "vpc-7ad5a4b6"
 
 http://localhost:4566 or http://nginx.dummy.local
 
-
-/etc/ hosts>> 127.0.0.1 nginx.dummy.local
+curl localhost
 
 ```
 
@@ -43,5 +44,7 @@ awslocal ecs describe-tasks --cluster arn:aws:ecs:us-east-1:000000000000:cluster
 awslocal elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:us-east-1:000000000000:targetgroup/ecs-target-group/50f52573
 
 awslocal elbv2 describe-listeners --load-balancer-arn arn:aws:elasticloadbalancing:us-east-1:000000000000:loadbalancer/app/nginx-alb/bf2137e4
+
+awslocal elbv2 describe-rules --listener-arn arn:aws:elasticloadbalancing:us-east-1:000000000000:listener/app/nginx-alb/bf2137e4/140cf51f915fc9d7
 
 ```
